@@ -1,112 +1,39 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {ResponsiveMenu} from 'material-ui-responsive-menu'
-
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import {connect} from 'react-redux';
-import ActionHome from 'material-ui/svg-icons/action/home';
-import Paper from 'material-ui/Paper';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import {Home} from 'containers';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 class App extends Component {
+  render(){
+    return(
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#">EJ</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
 
-  render() {
-    //const { } = this.props
-
-    const menuList=[
-      {
-        text: 'test1',
-        icon: undefined,
-        tooltip: 'test1',
-        hidden: false,
-        icon: <ActionHome/>,
-        onTouchTap: ()=>{console.log('test1')}
-      },
-      {
-        text: 'test2',
-        icon: <ActionHome/>,
-        tooltip:'test2',
-        hidden: undefined,
-        onTouchTap: ()=>{console.log('test2')}
-      },
-      {
-        text: 'test3',
-        icon: <ActionHome/>,
-        tooltip:'test3',
-        hidden: true,
-        onTouchTap: ()=>{console.log('test3')}
-      },
-      {
-        text: 'test4',
-        icon: <ActionHome/>,
-        tooltip:'test4',
-        onTouchTap: ()=>{console.log('test4')}
-      },
-      {
-        text: 'test5',
-        icon: <ActionHome/>,
-        tooltip:'test5',
-        onTouchTap: ()=>{console.log('test5')}
-      },
-      {
-        text: 'test6',
-        icon: <ActionHome/>,
-        tooltip:'test6',
-        onTouchTap: ()=>{console.log('test6')}
-      },
-      {
-        text: 'test7',
-        icon: <ActionHome/>,
-        tooltip:'test7',
-        onTouchTap: ()=>{console.log('test7')}
-      },
-      {
-        text: 'test8',
-        hidden: true,
-        icon: <ActionHome/>,
-        tooltip:'test8',
-        onTouchTap: ()=>{console.log('test8')}
-      },
-    ]
-
-    return (
-
-      <div>
-        <AppBar
-          title={'Responsive Menu Demo'}
-          zDepth={1}
-          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
-          iconElementRight={
-            <div>
-              <ResponsiveMenu menuList={menuList}/>
-            </div>
-          }
-          iconStyleRight={{width:'50%'}}
-          showMenuIconButton={true}
-        />
-
-        <Paper>
-          <ResponsiveMenu menuList={menuList}/>
-        </Paper>
-
-        <Toolbar>
-
-          <ToolbarGroup firstChild={true}>
-
-          </ToolbarGroup>
-          <ToolbarGroup lastChild={true} style={{width:'50%'}}>
-            <ResponsiveMenu menuList={menuList}/>
-          </ToolbarGroup>
-        </Toolbar>
-      </div>
-    );
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={1} href="#">Link</NavItem>
+              <NavItem eventKey={2} href="#">Link</NavItem>
+              <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                <MenuItem eventKey={3.1}>Action</MenuItem>
+                <MenuItem eventKey={3.2}>Another action</MenuItem>
+                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                <MenuItem divider />
+                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+              </NavDropdown>
+            </Nav>
+            <Nav pullLeft>
+              <NavItem eventKey={1} href="#">Link Right</NavItem>
+              <NavItem eventKey={2} href="#">Link Right</NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+    );  
   }
-}
-
-App.propTypes = {
-
 };
 
 const mapStateToProps = (state) => {

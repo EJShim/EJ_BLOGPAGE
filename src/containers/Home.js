@@ -1,9 +1,13 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 class Home extends React.Component{
     render(){
         return(
-            <h1> Hello World </h1>
+            <div>
+                <h1> Home </h1>
+                <Button> ha </Button>
+            </div>
         );
         
     }
