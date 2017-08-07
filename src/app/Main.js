@@ -1,80 +1,129 @@
-/**
- * In this file, we create a React component
- * which incorporates components provided by Material-UI.
- */
-import React, {Component} from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import Dialog from 'material-ui/Dialog';
-import {deepOrange500} from 'material-ui/styles/colors';
-import FlatButton from 'material-ui/FlatButton';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import {ResponsiveMenu} from 'material-ui-responsive-menu'
 
-const styles = {
-  container: {
-    textAlign: 'center',
-    paddingTop: 200,
-  },
-};
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import {connect} from 'react-redux';
+import ActionHome from 'material-ui/svg-icons/action/home';
+import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
-});
-
-class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      open: false,
-    };
-  }
-
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  }
-
-  handleTouchTap = () => {
-    this.setState({
-      open: true,
-    });
-  }
+class App extends Component {
 
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
+    //const { } = this.props
+
+    const menuList=[
+      {
+        text: 'test1',
+        icon: undefined,
+        tooltip: 'test1',
+        hidden: false,
+        icon: <ActionHome/>,
+        onTouchTap: ()=>{console.log('test1')}
+      },
+      {
+        text: 'test2',
+        icon: <ActionHome/>,
+        tooltip:'test2',
+        hidden: undefined,
+        onTouchTap: ()=>{console.log('test2')}
+      },
+      {
+        text: 'test3',
+        icon: <ActionHome/>,
+        tooltip:'test3',
+        hidden: true,
+        onTouchTap: ()=>{console.log('test3')}
+      },
+      {
+        text: 'test4',
+        icon: <ActionHome/>,
+        tooltip:'test4',
+        onTouchTap: ()=>{console.log('test4')}
+      },
+      {
+        text: 'test5',
+        icon: <ActionHome/>,
+        tooltip:'test5',
+        onTouchTap: ()=>{console.log('test5')}
+      },
+      {
+        text: 'test6',
+        icon: <ActionHome/>,
+        tooltip:'test6',
+        onTouchTap: ()=>{console.log('test6')}
+      },
+      {
+        text: 'test7',
+        icon: <ActionHome/>,
+        tooltip:'test7',
+        onTouchTap: ()=>{console.log('test7')}
+      },
+      {
+        text: 'test8',
+        hidden: true,
+        icon: <ActionHome/>,
+        tooltip:'test8',
+        onTouchTap: ()=>{console.log('test8')}
+      },
+    ]
 
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.container}>
-          <Dialog
-            open={this.state.open}
-            title="Super Secret Password"
-            actions={standardActions}
-            onRequestClose={this.handleRequestClose}
-          >
-            1-2-3-4-5
-          </Dialog>
-          <h1>Material-UI</h1>
-          <h2>example project</h2>
-          <RaisedButton
-            label="EJ First Material UI"
-            secondary={true}
-            onTouchTap={this.handleTouchTap}
-          />
-        </div>
-      </MuiThemeProvider>
+
+      <div>
+        <AppBar
+          title={'Responsive Menu Demo'}
+          zDepth={1}
+          iconElementLeft={<IconButton><NavigationClose /></IconButton>}
+          iconElementRight={
+            <div>
+              <ResponsiveMenu menuList={menuList}/>
+            </div>
+          }
+          iconStyleRight={{width:'50%'}}
+          showMenuIconButton={true}
+        />
+
+        <Paper>
+          <ResponsiveMenu menuList={menuList}/>
+        </Paper>
+
+        <Toolbar>
+
+          <ToolbarGroup firstChild={true}>
+
+          </ToolbarGroup>
+          <ToolbarGroup lastChild={true} style={{width:'50%'}}>
+            <ResponsiveMenu menuList={menuList}/>
+          </ToolbarGroup>
+        </Toolbar>
+      </div>
     );
   }
 }
 
-export default Main;
+App.propTypes = {
+
+};
+
+const mapStateToProps = (state) => {
+  //const {  browser, responsiveDrawer } = state;
+  return {
+
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
