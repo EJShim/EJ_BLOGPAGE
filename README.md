@@ -1,1 +1,1 @@
-# EJ_BLOGPAGE
+EJ BLog Pagd
