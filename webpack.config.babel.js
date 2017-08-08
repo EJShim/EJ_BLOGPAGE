@@ -4,11 +4,11 @@ import webpack from 'webpack';
 export default {
   entry: './src/index.js',
   output: {
-    path: path.resolve('./build'),
+    path: path.resolve('./build/public'),
     filename: 'index.js'
   },
   resolve: {
-    extensions: ['.js', '.scss', '.css', '.json'],
+    extensions: ['.js', '.scss', '.css', '.json']
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({

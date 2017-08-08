@@ -36,7 +36,7 @@
     "clean": "rm -rf build",
     "build": "babel server --out-dir build && webpack",
     "watch": "webpack --watch",
-    "serve": "webpack-dev-server --open --content-base ./build",
+    "development": "webpack-dev-server --open --content-base ./build/public",
     "start": "node build/main.js"
   }
 }

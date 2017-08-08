@@ -1,6 +1,7 @@
 //import styles
 import 'grommet/scss/vanilla/index';
 
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from 'grommet/components/App';
@@ -11,17 +12,24 @@ import Meter from 'grommet/components/Meter';
 import Title from 'grommet/components/Title';
 import Value from 'grommet/components/Value';
 
+import {E_Header} from './components'
+
 class Main extends Component {
   render() {
-    return (
-      <App centered={false}>
-        <Header direction="row" justify="between" size="large"
+    return (      
+      <App centered={false}>       
+        <E_Header/>  
+         <Header direction="row" justify="between" size="large"
           pad={{ horizontal: 'medium' }}>
-          <Title>Grommet standalone</Title>
-        </Header>
+          <Title>Grommet STDSF</Title>          
+        </Header> 
+
+
         <Box pad='medium'>
-          <Meter value={40} />
+          <Meter value={60} />
         </Box>
+
+
         <Footer primary={true} appCentered={true} direction="column"
           align="center" pad="small" colorIndex="grey-1">
           <p>
@@ -32,6 +40,9 @@ class Main extends Component {
     );
   }
 };
+
+
+
 
 let element = document.getElementById('content');
 ReactDOM.render(React.createElement(Main), element);
