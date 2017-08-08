@@ -1,48 +1,110 @@
 import path from 'path';
 import webpack from 'webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
-export default {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve('./build/public'),
-    filename: 'index.js'
-  },
-  resolve: {
-    modules: ["node_modules", "src"],
-    extensions: ['.js', '.scss', '.css', '.json']
-  },
-  plugins: [
+const env = process.env.NODE_ENV || 'production';
+
+let plugins = [
+  new CopyWebpackPlugin([{ from: './public' }]),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(env)
+    }
+  })
+];
+
+const loaderOptionsConfig = {
+  options: {
+    sassLoader: {
+      includePaths: [
+        './node_modules'
+      ]
+    }
+  }
+};
+
+const devConfig = {};
+if (env === 'production') {
+  loaderOptionsConfig.minimize = true;
+  plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        warnings: false
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+      },
+      mangle: {
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+        screw_ie8: true
       }
     })
-  ],
+  );
+} else {
+  plugins = plugins.concat([
+    new webpack.HotModuleReplacementPlugin()
+  ]);
+  devConfig.devtool = 'cheap-module-source-map';
+  devConfig.entry = [
+    require.resolve('react-dev-utils/webpackHotDevClient'),
+    './src/js/index.js'
+  ];
+  devConfig.devServer = {
+    compress: true,
+    clientLogLevel: 'none',
+    contentBase: path.resolve('./build/public'),
+    publicPath: '/',
+    quiet: true,
+    hot: true,
+    watchOptions: {
+      ignored: /node_modules/
+    },
+    historyApiFallback: true
+  };
+}
+
+plugins.push(new webpack.LoaderOptionsPlugin(loaderOptionsConfig));
+
+export default Object.assign({
+  entry: './src/js/index.js',
+  output: {
+    path: path.resolve('./build/public'),
+    filename: 'index.js',
+    publicPath: '/'
+  },
+  resolve: {
+    modules: ['node_modules', 'src/js'],
+    extensions: ['.js', '.scss', '.css', '.json']
+  },
+  plugins,
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  },
   module: {
     rules: [
       {
-        exclude: /node_modules/,
         test: /\.js/,
-        use: [
-          { loader: 'babel-loader' }
-        ]
+        exclude: /node_modules/,
+        loader: 'babel-loader'
       },
       {
         test: /\.scss$/,
         use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'sass-loader', options: {
-              includePaths: ['./node_modules']
-            }
-          }
+          { loader: 'file-loader', options: { name: '[name].css' } },
+          { loader: 'sass-loader', options: { outputStyle: 'compressed' } }
         ]
-      },
+      }
     ]
   }
-};
+}, devConfig);

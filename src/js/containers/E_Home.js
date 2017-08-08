@@ -51,10 +51,7 @@ class E_Home extends React.Component{
                         Section 5                                            
                     </Headline>
                 </Section>
-            </Article>
-                
-            
-                        
+            </Article>              
         );
     }
 };

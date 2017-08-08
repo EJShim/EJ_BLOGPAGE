@@ -1,18 +1,19 @@
 {
-  "name": "grommet-standalone",
+  "name": "ej_blog",
   "version": "0.1.0",
-  "description": "Sample app using Grommet without the development stack.",
-  "main": "src/index.js",
-  "license": "Apache-2.0",
+  "authors": [
+    "EJ Shim"
+  ],
+  "homepage": "https://soulrommel.cafe24.com",  
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/grommet/grommet-standalone.git"
+    "url": "https://github.com/EJShim/EJ_BLOG_PAGE"
   },
   "dependencies": {
-    "grommet": "^1.0.0",
-    "morgan": "^1.8.2",
-    "react": "^15.2.0",
-    "react-dom": "^15.2.0",
+    "grommet": "https://github.com/grommet/grommet/tarball/stable",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
@@ -21,28 +22,57 @@
     "three-trackballcontrols": "0.0.5"
   },
   "devDependencies": {
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-runtime": "^6.22.0",
+    "babel-core": "^6.5.2",
+    "babel-jest": "^18.0.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-register": "^6.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "cheerio": "^1.0.0-rc.2",
-    "css-loader": "^0.26.2",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^3.1.4",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-parallel": "^0.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
     "express-session": "^1.15.5",
+    "file-loader": "^0.9.0",
+    "grommet-cli": "^3.0.0",
     "mongoose": "^4.11.6",
-    "node-sass": "^4.5.0",
-    "sass-loader": "^6.0.2",
-    "style-loader": "^0.13.2",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "morgan": "^1.8.2",
+    "node-sass": "^4.1.1",    
+    "react-dev-utils": "^0.4.2",
+    "react-test-renderer": "^15.4.1",
+    "sass-lint": "^1.10.2",
+    "sass-loader": "^4.1.1",
+    "webpack": "^2.2.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js}"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/templates/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|templates|node_modules)[/\\\\]"
+    ]
   },
   "scripts": {
     "clean": "rm -rf build",
-    "build": "babel server --out-dir build && webpack",
-    "watch": "webpack --watch",
-    "development": "webpack-dev-server --open --content-base ./build/public",
-    "start": "node build/main.js"
+    "test": "grommet check",
+    "development": "cross-env NODE_ENV=development grommet pack",
+    "build": "babel server --out-dir build && cross-env NODE_ENV=production grommet pack",
+    "start": "node ./build/main.js"
   }
 }

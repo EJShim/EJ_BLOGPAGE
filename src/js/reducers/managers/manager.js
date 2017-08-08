@@ -2,8 +2,6 @@ import * as THREE from 'three';
 import TrackballControls from 'three-trackballcontrols';
 // let TrackballControls = require('three-trackballcontrols');
 
-
-
 class E_Manager {
     constructor() {
         this.m_bAnimate = true;
@@ -83,7 +81,7 @@ class E_Manager {
     }
 
     OnResize() {        
-        if (this.renderWindow === null) return;
+        if (this.renderWindow === null || this.renderWindow === undefined) return;
 
         //Handle Resize
         let width = 500;

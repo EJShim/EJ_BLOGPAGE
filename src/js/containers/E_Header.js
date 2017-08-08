@@ -21,13 +21,15 @@ class E_Header extends React.Component{
                     <Link to='/board'>                    
                         Borard                    
                     </Link>
-
                     <Link to='/portfolio'>                    
                         Portfolio                    
                     </Link>
                     
                     <Link to='/video'>                    
-                        Collaboration                    
+                        Video
+                    </Link>
+                    <Link to='/Collaboration'>                    
+                        Collaboration
                     </Link>
                     </Menu>
                 </Box> 
