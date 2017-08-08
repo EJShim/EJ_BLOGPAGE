@@ -4,39 +4,37 @@ import 'grommet/scss/vanilla/index';
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import reducers from 'reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { BrowserRouter, Route, IndexRoute, Switch, Link } from 'react-router-dom';
 import App from 'grommet/components/App';
-import Box from 'grommet/components/Box';
-import Header from 'grommet/components/Header';
-import Footer from 'grommet/components/Footer';
-import Meter from 'grommet/components/Meter';
-import Title from 'grommet/components/Title';
 import Value from 'grommet/components/Value';
+import {E_Header, E_Footer, E_Home, E_Video, E_Portfolio, E_Board} from 'containers'
 
-import {E_Header} from './components'
+const store = createStore(reducers, applyMiddleware(thunk));
+
 
 class Main extends Component {
   render() {
-    return (      
-      <App centered={false}>       
-        <E_Header/>  
-         <Header direction="row" justify="between" size="large"
-          pad={{ horizontal: 'medium' }}>
-          <Title>Grommet STDSF</Title>          
-        </Header> 
-
-
-        <Box pad='medium'>
-          <Meter value={60} />
-        </Box>
-
-
-        <Footer primary={true} appCentered={true} direction="column"
-          align="center" pad="small" colorIndex="grey-1">
-          <p>
-            Build your ideas with <a href="http://grommet.io" target="_blank">Grommet</a>!
-          </p>
-        </Footer>
+    return (
+      <Provider store = {store}>
+      <BrowserRouter>
+      <App centered={false} inline={false}>       
+        <E_Header/>       
+        
+          <div>
+            <Route exact path ='/' component={E_Home}/>
+            <Route path ='/board' component={E_Board}/>
+            <Route path ='/portfolio' component={E_Portfolio}/>
+            <Route path ='/video' component={E_Video}/>          
+          </div>
+        
+        <E_Footer/>
       </App>
+      </BrowserRouter>
+      </Provider>
     );
   }
 };

@@ -8,6 +8,7 @@ export default {
     filename: 'index.js'
   },
   resolve: {
+    modules: ["node_modules", "src"],
     extensions: ['.js', '.scss', '.css', '.json']
   },
   plugins: [
