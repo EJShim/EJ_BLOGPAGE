@@ -16,8 +16,8 @@ const element = document.getElementById('content');
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-        <App />
+        <BrowserRouter>            
+                <App />            
         </BrowserRouter>
     </Provider>, element);
 

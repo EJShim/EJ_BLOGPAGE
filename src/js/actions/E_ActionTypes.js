@@ -1,0 +1,1 @@
+export const TOGGLE_FOOTER = "TOGGLE_FOOTER"

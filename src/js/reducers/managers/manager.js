@@ -43,19 +43,16 @@ class E_Manager {
 
     SetRenderWindow(renderwindow) {
 
-
         this.DoAnimate();
         this.renderWindow = renderwindow;
         this.renderWindow.appendChild(this.renderer.domElement);
-
-        
 
         this.OnResize();
     }
 
     RemoveRenderWindow() {
         
-        let renWin = this.renderWindow
+        let renWin = this.renderWindow;
         while (renWin.firstChild) {
             renWin.removeChild(renWin.firstChild);        
         }

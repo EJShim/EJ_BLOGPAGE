@@ -13,7 +13,12 @@ import Menu from 'grommet/components/Menu';
 import Anchor from 'grommet/components/Anchor';
 import Footer from 'grommet/components/Footer';
 import Button from 'grommet/components/Button';
+import Hero from 'grommet/components/Hero';
+import Image from 'grommet/components/Image';
+import Heading from 'grommet/components/Heading';
+
 import CloudIcon from 'grommet/components/icons/base/Cloud'
+
 
 
 
@@ -22,10 +27,18 @@ class E_Home extends React.Component{
         return(                            
             <Article scrollStep={true}>
                 <Section pad='large' justify='center' align='center' full='vertical' colorIndex='grey-4'>
-                    <Headline margin='none'>
-                    Section 0
-                    </Headline>
+                    <Hero background={<Image src='/img/sample.jpg' fit='cover' full={true} />} backgroundColorIndex='dark'>
+                        <Box direction='row' justify='center' align='center'>
+                            <Box basis='1/2' align='end' pad='medium' />
+                            <Box basis='1/2' align='start' pad='medium'>
+                                <Heading margin='none'>
+                                    Sample Heading
+                                </Heading>
+                            </Box>
+                        </Box>
+                    </Hero>
                 </Section>
+
                 <Section pad='large' justify='center' align='center' full='vertical'>
                     <Headline margin='none'>
                     Section 1

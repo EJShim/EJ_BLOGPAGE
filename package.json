@@ -4,15 +4,17 @@
   "authors": [
     "EJ Shim"
   ],
-  "homepage": "https://soulrommel.cafe24.com",  
+  "homepage": "https://soulrommel.cafe24.com",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/EJShim/EJ_BLOG_PAGE"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "grommet": "https://github.com/grommet/grommet/tarball/stable",
     "react": "^15.0.2",
+    "react-addons-update": "^15.6.0",
     "react-dom": "^15.0.2",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
@@ -45,7 +47,7 @@
     "grommet-cli": "^3.0.0",
     "mongoose": "^4.11.6",
     "morgan": "^1.8.2",
-    "node-sass": "^4.1.1",    
+    "node-sass": "^4.1.1",
     "react-dev-utils": "^0.4.2",
     "react-test-renderer": "^15.4.1",
     "sass-lint": "^1.10.2",

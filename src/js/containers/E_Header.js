@@ -10,27 +10,31 @@ import { Link } from 'react-router-dom';
 
 
 class E_Header extends React.Component{
-    render(){
+    render(){        
         return(            
-            <Header splash={false} float={false} fixed={false} colorIndex='accent-1'>
-                <Title>
-                    <Link to='/'>EJ</Link>
-                </Title>                
-                 <Box flex={true} justify='end' direction='row'responsive={false} colorIndex='neutral-1'>                    
-                    <Menu colorIndex='neutral-2' responsive={true} direction='row' inline={true} primary={false}>
-                    <Link to='/board'>                    
-                        Borard                    
-                    </Link>
-                    <Link to='/portfolio'>                    
-                        Portfolio                    
-                    </Link>
-                    
-                    <Link to='/video'>                    
-                        Video
-                    </Link>
-                    <Link to='/Collaboration'>                    
-                        Collaboration
-                    </Link>
+            <Header size='small' splash={false} float={false} fixed={false} colorIndex='neutral-1'>
+                <Box colorIndex='neutral-2' >
+                    <Title>
+                        <Link className="grommetux-anchor" to='/'>EJ</Link>
+                    </Title>                
+                </Box>
+                 <Box flex={true} justify='between' direction='row'responsive={false} colorIndex='neutral-1' margin='small' alignContent='between'>                    
+                    <Menu fill={false} size='small' responsive={true} direction='row' inline={true} primary={false}>  
+                        <Link className="grommetux-anchor active" to='/board'>
+                            Board  
+                        </Link>
+                        
+                        <Link className="grommetux-anchor" to='/portfolio'>                    
+                            Portfolio                    
+                        </Link>
+                        
+                        <Link className="grommetux-anchor" to='/video'>                    
+                            Video
+                        </Link>
+                        
+                        <Link className="grommetux-anchor" to='/Collaboration'>                    
+                            Collaboration
+                        </Link>
                     </Menu>
                 </Box> 
             </Header>
