@@ -1,7 +1,6 @@
 import express from 'express';
 import path from 'path';
 
-
 import morgan from 'morgan'; // HTTP REQUEST LOGGER
 import bodyParser from 'body-parser'; // PARSE HTML BODY
 import mongoose from 'mongoose';
@@ -11,7 +10,7 @@ import api from './routes';
 
 
 const app = express();
-const port = process.env.PORT || 1337;
+const port = process.env.PORT || 3000;
 
 // MongoDB
 // app.use(morgan('dev'));

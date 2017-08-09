@@ -27,8 +27,6 @@ class E_Portfolio extends React.Component{
             </Box>
         );
 
-        console.log(contents)
-
         return(
             <Section primary={false} flex={false} colorIndex='grey-2'>
                 <h1> Portfolio </h1>

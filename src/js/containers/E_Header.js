@@ -13,7 +13,7 @@ class E_Header extends React.Component{
     render(){        
         return(            
             <Header size='small' splash={false} float={false} fixed={false} colorIndex='neutral-1'>
-                <Box colorIndex='neutral-2' >
+                <Box colorIndex='neutral-1' >
                     <Title>
                         <Link className="grommetux-anchor" to='/'>EJ</Link>
                     </Title>                

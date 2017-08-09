@@ -16,8 +16,7 @@ router.get('/', (req, res) => {
         if (!error) {
             let $ = cheerio.load(html);
 
-            let elements = $('.yt-uix-scroller-scroll-unit')
-            // console.log("number of elements : ", elements.length);
+            let elements = $('.yt-uix-scroller-scroll-unit')            
 
             elements.each(function(){
                 let data = {};
