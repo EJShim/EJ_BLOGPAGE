@@ -25,7 +25,12 @@
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "three": "^0.86.0",
-    "three-trackballcontrols": "0.0.5"
+    "three-trackballcontrols": "0.0.5",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "mongoose": "^4.11.6",
+    "morgan": "^1.8.2",
+    "cheerio": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -35,9 +40,6 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-register": "^6.18.0",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.17.2",
-    "cheerio": "^1.0.0-rc.2",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.4",
     "eslint": "^3.9.1",
@@ -48,9 +50,7 @@
     "eslint-plugin-react": "^6.6.0",    
     "express-session": "^1.15.5",
     "file-loader": "^0.9.0",
-    "grommet-cli": "^3.0.0",
-    "mongoose": "^4.11.6",
-    "morgan": "^1.8.2",
+    "grommet-cli": "^3.0.0",    
     "node-sass": "^4.1.1",
     "react-dev-utils": "^0.4.2",
     "react-test-renderer": "^15.4.1",
@@ -79,6 +79,6 @@
     "test": "grommet check",
     "development": "cross-env NODE_ENV=development grommet pack",
     "build": "babel server --out-dir build && cross-env NODE_ENV=production grommet pack",
-    "start": "npm install && node ./build/main.js"
+    "start": "node ./build/main.js"
   }
 }
