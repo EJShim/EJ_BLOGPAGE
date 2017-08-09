@@ -1,10 +1,10 @@
 import express from 'express';
-import path from 'path';
-import morgan from 'morgan'; // HTTP REQUEST LOGGER
-import bodyParser from 'body-parser'; // PARSE HTML BODY
-import mongoose from 'mongoose';
-import session from 'express-session';
-import api from './routes';
+// import path from 'path';
+// import morgan from 'morgan'; // HTTP REQUEST LOGGER
+// import bodyParser from 'body-parser'; // PARSE HTML BODY
+// import mongoose from 'mongoose';
+// import session from 'express-session';
+// import api from './routes';
 
 
 const app = express();
