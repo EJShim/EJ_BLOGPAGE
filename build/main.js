@@ -56,9 +56,6 @@ var port = process.env.PORT || 3000;
 
 //Main Page
 // app.use('/', express.static(path.join(__dirname, 'public')));
-app.use('/', function (req, res) {
-    res.end('ha');
-});
 
 // //Router
 // app.use('/api', api);
@@ -68,6 +65,10 @@ app.use('/', function (req, res) {
 //     res.sendFile(path.resolve(__dirname, 'public/index.html'));
 // });
 
+
+app.use('/', function (req, res) {
+    res.end('ha');
+});
 
 /* handle error */
 app.use(function (err, req, res, next) {
