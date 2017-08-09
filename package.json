@@ -1,6 +1,9 @@
 {
   "name": "ej_blog",
   "version": "0.1.0",
+  "engines": {
+    "node": "8.1.4"
+  },
   "authors": [
     "EJ Shim"
   ],
