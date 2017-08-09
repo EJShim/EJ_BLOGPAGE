@@ -13,10 +13,12 @@ class E_Header extends React.Component{
     render(){        
         return(            
             <Header size='small' splash={false} float={false} fixed={false} colorIndex='neutral-1'>
-                <Box colorIndex='neutral-1' >
-                    <Title>
-                        <Link className="grommetux-anchor" to='/'>EJ</Link>
-                    </Title>                
+                <Box>
+                    <Link className="grommetux-anchor" to='/'>
+                        <Title>
+                            <CloudIcon/>EJ
+                        </Title>                
+                    </Link>
                 </Box>
                  <Box flex={true} justify='between' direction='row'responsive={false} colorIndex='neutral-1' margin='small' alignContent='between'>                    
                     <Menu fill={false} size='small' responsive={true} direction='row' inline={true} primary={false}>  
