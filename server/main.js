@@ -10,34 +10,39 @@ import api from './routes';
 const app = express();
 const port = process.env.PORT || 3000;
 
-// MongoDB
-// app.use(morgan('dev'));
-app.use(bodyParser.json());
+// // MongoDB
+// // app.use(morgan('dev'));
+// app.use(bodyParser.json());
 
-/* mongodb connection */
-const db = mongoose.connection;
-db.on('error', console.error);
-db.once('open', () => { console.log('Connected to mongodb server'); });
-// mongoose.connect('mongodb://username:password@host:port/database=');
-mongoose.connect('mongodb://localhost/codelab');
+// /* mongodb connection */
+// const db = mongoose.connection;
+// db.on('error', console.error);
+// db.once('open', () => { console.log('Connected to mongodb server'); });
+// // mongoose.connect('mongodb://username:password@host:port/database=');
+// mongoose.connect('mongodb://localhost/codelab');
 
-/* use session */
-app.use(session({
-    secret: 'CodeLab1$1$234',
-    resave: false,
-    saveUninitialized: true
-}));
+// /* use session */
+// app.use(session({
+//     secret: 'CodeLab1$1$234',
+//     resave: false,
+//     saveUninitialized: true
+// }));
 
 
 //Main Page
-app.use('/', express.static(path.join(__dirname, 'public')));
+// app.use('/', express.static(path.join(__dirname, 'public')));
 
-//Router
-app.use('/api', api);
+// //Router
+// app.use('/api', api);
 
-/* support client-side routing */
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public/index.html'));
+// /* support client-side routing */
+// app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'public/index.html'));
+// });
+
+
+app.use('/', (req, res)=>{
+    res.end('ha');
 });
 
 
