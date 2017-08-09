@@ -21,7 +21,7 @@ class E_Header extends React.Component{
                     </Link>
                 </Box>
                  <Box flex={true} justify='end' direction='row'responsive={false} colorIndex='neutral-1' margin='small' alignContent='between'>                    
-                    <Menu fill={false} size='medium' responsive={true} direction='row' inline={true} primary={false}>  
+                    <Menu fill={false} size='small' label='menu' responsive={true} direction='row' inline={true} primary={false}>  
                         <Link className="grommetux-anchor active" to='/board'>
                             Board  
                         </Link>
