@@ -10,38 +10,8 @@ import session from 'express-session';
 import api from './routes';
 
 
-
-
-//Development!!
-
-
-
-/*
-    Express Codes
-*/
-// import WebpackDevServer from 'webpack-dev-server';
-// import webpack from 'webpack';
-// const devPort = 4000;
-
-// if(process.env.NODE_ENV == 'development') {
-    
-    
-    
-//     console.log('Server is running on development mode');
-//     const config = require('../webpack.dev.config');
-//     const compiler = webpack(config);
-//     const devServer = new WebpackDevServer(compiler, config.devServer);
-//     devServer.listen(
-//         devPort, () => {
-//             console.log('webpack-dev-server is listening on port', devPort);
-//         }
-//     );
-// }
-
-
-
 const app = express();
-const port = process.env.PORT || 1337;
+const port = process.env.PORT || 3000;
 
 // MongoDB
 // app.use(morgan('dev'));

@@ -30,35 +30,10 @@ var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//Development!!
-
-
-/*
-    Express Codes
-*/
-// import WebpackDevServer from 'webpack-dev-server';
-// import webpack from 'webpack';
-// const devPort = 4000;
-
-// if(process.env.NODE_ENV == 'development') {
-
-
-//     console.log('Server is running on development mode');
-//     const config = require('../webpack.dev.config');
-//     const compiler = webpack(config);
-//     const devServer = new WebpackDevServer(compiler, config.devServer);
-//     devServer.listen(
-//         devPort, () => {
-//             console.log('webpack-dev-server is listening on port', devPort);
-//         }
-//     );
-// }
-
-
 // HTTP REQUEST LOGGER
 var app = (0, _express2.default)(); // PARSE HTML BODY
 
-var port = process.env.PORT || 1337;
+var port = process.env.PORT || 3000;
 
 // MongoDB
 // app.use(morgan('dev'));
