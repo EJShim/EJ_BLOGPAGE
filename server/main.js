@@ -33,7 +33,7 @@ app.use(session({
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 //Router
-// app.use('/api', api);
+app.use('/api', api);
 
 /* support client-side routing */
 app.get('*', (req, res) => {
