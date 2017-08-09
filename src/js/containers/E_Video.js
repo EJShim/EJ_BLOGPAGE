@@ -53,10 +53,15 @@ class E_Video extends React.Component{
             <Card onClick={()=>this._onClickCard(video.id)} thumbnail={video.image} label={video.title} />    
         );
         return(
-            <Section primary={false} flex={false} colorIndex='grey-2'>
+            <Section primary={false} flex={false} colorIndex='grey-2' padding='large'>
                 <h1> Video </h1>
                 
-                <Box direction='row' align='center'  pad='small' justify='between' responsive={true} wrap={true}>
+                <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} margin='large'>
+                    <Card onClick={()=>this._onClickCard("babo")}  thumbnail='/img/sample.jpg' label='youtube' heading="Sample title" />
+                    <Card onClick={()=>this._onClickCard("babo")}  thumbnail='/img/sample.jpg' label='youtube' heading="Sample title" />   
+                    <Card onClick={()=>this._onClickCard("babo")}  thumbnail='/img/sample.jpg' label='youtube' heading="Sample title" />
+                    <Card onClick={()=>this._onClickCard("babo")}  thumbnail='/img/sample.jpg' label='youtube' heading="Sample title" />   
+                    <Card onClick={()=>this._onClickCard("babo")}  thumbnail='/img/sample.jpg' label='youtube' heading="Sample title" />
                     <Card onClick={()=>this._onClickCard("babo")}  thumbnail='/img/sample.jpg' label='youtube' heading="Sample title" />   
                     {contents}
                 </Box>
