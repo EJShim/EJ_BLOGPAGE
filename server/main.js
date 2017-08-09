@@ -1,12 +1,9 @@
 import express from 'express';
 import path from 'path';
-
-
 import morgan from 'morgan'; // HTTP REQUEST LOGGER
 import bodyParser from 'body-parser'; // PARSE HTML BODY
 import mongoose from 'mongoose';
 import session from 'express-session';
-
 import api from './routes';
 
 
@@ -36,7 +33,7 @@ app.use(session({
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 //Router
-app.use('/api', api);
+// app.use('/api', api);
 
 /* support client-side routing */
 app.get('*', (req, res) => {
