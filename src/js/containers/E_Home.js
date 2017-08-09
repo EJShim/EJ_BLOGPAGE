@@ -10,6 +10,7 @@ import Sidebar from 'grommet/components/Sidebar';
 import Header from 'grommet/components/Header';
 import Title from 'grommet/components/Title';
 import Menu from 'grommet/components/Menu';
+import Card from 'grommet/components/Card';
 import Anchor from 'grommet/components/Anchor';
 import Footer from 'grommet/components/Footer';
 import Button from 'grommet/components/Button';
@@ -26,30 +27,37 @@ class E_Home extends React.Component{
     render(){
         return(                            
             <Article scrollStep={true}>
-                <Section pad='large' justify='center' align='center' full='vertical' colorIndex='grey-4'>
-                    <Hero background={<Image src='/img/sample.jpg' fit='cover' full={true} />} backgroundColorIndex='dark'>
-                        <Box direction='row' justify='center' align='center'>
-                            <Box basis='1/2' align='end' pad='medium' />
+                <Hero background={<Image src='/img/sample.jpg' fit='cover' full={true} />} backgroundColorIndex='dark' size='large'>
+                    <Box direction='row' justify='center' align='center'>
+                        <Box basis='1/2' align='end' pad='medium' />
                             <Box basis='1/2' align='start' pad='medium'>
-                                <Heading margin='none'>
-                                    Sample Heading
-                                </Heading>
+                            <Box colorIndex='grey-1-a'>
+                                <Card heading='EJ' description='hhaha.'label='react' 
+                                link={<Anchor href='#'
+                                primary={true}
+                                label='Link' />} />
                             </Box>
-                        </Box>
-                    </Hero>
+                            </Box>
+                    </Box>
+                </Hero>
+                
+                <Section pad='large' justify='center' align='center' full='vertical' colorIndex='grey-4'>
+                   Ha
                 </Section>
 
-                <Section pad='large' justify='center' align='center' full='vertical'>
+                
+
+                <Section pad='large' justify='center' align='center' full='vertical' colorIndex='accent-2'>
                     <Headline margin='none'>
                     Section 1
                     </Headline>
                 </Section>
-                <Section pad='large' justify='center' align='center' full='vertical' colorIndex='grey-4'>
+                <Section pad='large' justify='center' align='center' full='vertical' colorIndex='neutral-1-t'>
                     <Headline margin='none'>
                     Section 2
                     </Headline>
                 </Section>
-                <Section pad='large' justify='center' align='center' full='vertical'>
+                <Section pad='large' justify='center' align='center' full='vertical' colorIndex='neutral-2'>
                     <Headline margin='none'>
                     Section 3
                     </Headline>
@@ -59,7 +67,7 @@ class E_Home extends React.Component{
                         Section 4
                     </Headline>
                 </Section>
-                <Section pad='large' justify='center' align='center' full='vertical'>
+                <Section pad='large' justify='center' align='center' full='vertical' colorIndex='neutral-3'>
                     <Headline margin='none'>
                         Section 5                                            
                     </Headline>
