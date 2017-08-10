@@ -10,7 +10,7 @@ import Article from 'grommet/components/Article'
 import Button from 'grommet/components/Button'
 
 import { Route, Link } from 'react-router-dom';
-import {E_Header, E_Footer, E_Home, E_Video, E_Portfolio, E_Board, E_Collaboration} from 'containers';
+import {E_Header, E_Footer, E_Home, E_Video, E_Portfolio, E_Board, E_Collaboration, E_Slides} from 'containers';
 import {E_MobileHeader, E_DesktopHeader} from 'components/E_ResHeader';
 import {TodoAppDashboard} from 'components';
 import UpIcon from 'grommet/components/icons/base/Up';
@@ -43,9 +43,7 @@ class Main extends Component {
         let dom = findDOMNode(this._mobileNavRef)
 
         let mobile = false;
-        if(dom.offsetParent !== null) mobile = true;     
-        
-        console.log(mobile)
+        if(dom.offsetParent !== null) mobile = true;                   
                 
         const rect = dom.getBoundingClientRect();
         this.setState({ 
@@ -67,16 +65,21 @@ class Main extends Component {
   } = this.state;    
   
   const menuData = [
-    {name:"Board", path:"/board"}, 
-    {name:"Portfolio", path:"/portfolio"}, 
-    {name:"Video", path:"/video"}, 
-    {name:"Collaboration", path:"/Collaboration"}
+    {name:"Board", path:"/board", component:TodoAppDashboard}, 
+    {name:"Portfolio", path:"/portfolio", component:E_Portfolio}, 
+    {name:"Video", path:"/video", component:E_Video}, 
+    {name:"Collaboration", path:"/Collaboration", component:E_Collaboration},
+    {name:"Slides", path:"/slides", component:E_Slides}
   ];
 
   const menuAnchors = menuData.map((menu, index)=>
     <Link key={index} className="grommetux-anchor" to={menu.path}>
         {menu.name}
     </Link>
+  );
+
+  const routerElements = menuData.map((menu, index)=>
+    <Route key={index} path = {menu.path} component={menu.component}/>
   );
 
 
@@ -96,12 +99,9 @@ class Main extends Component {
                     MENU
                 </Box>            
                 <E_DesktopHeader className='home-desktop' menuAnchors = {menuAnchors}/>
+                
                 <Route exact path = '/' component={E_Home}/>
-                <Route path ='/board' component={TodoAppDashboard}/>
-                <Route path ='/portfolio' component={E_Portfolio}/>
-                <Route path ='/video' component={E_Video}/>
-                <Route path ='/collaboration' component={E_Collaboration}/>
-
+                {routerElements}
 
                 <E_Footer style={footerStyle}/>
               </Box>

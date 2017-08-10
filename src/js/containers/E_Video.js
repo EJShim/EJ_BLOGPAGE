@@ -56,7 +56,7 @@ class E_Video extends React.Component{
             <Section primary={false} flex={false} colorIndex='grey-2' pad='large'>
                 <h1> Video </h1>
                 
-                <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} margin='large'>           
+                <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} pad={{horizontal:"small"}}>    
                     {contents}
                 </Box>
                 {this.state.layerVisible &&  layer }
