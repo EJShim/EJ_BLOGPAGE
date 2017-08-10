@@ -24,9 +24,11 @@ import CloudIcon from 'grommet/components/icons/base/Cloud'
 
 
 class E_Home extends React.Component{
+
     render(){
-        return(                            
-            <Article scrollStep={true}>
+        return(
+            <div>                    
+            <Article scrollStep={false}>
                 <Hero background={<Image src='/img/sample.jpg' fit='cover' full={true} />} backgroundColorIndex='dark' size='large'>
                     <Box direction='row' justify='center' align='center'>
                         <Box basis='1/2' align='end' pad='medium' />
@@ -40,18 +42,17 @@ class E_Home extends React.Component{
                             </Box>
                     </Box>
                 </Hero>
-                
+                                
                 <Section pad='large' justify='center' align='center' full='vertical' colorIndex='grey-4'>
                    Ha
                 </Section>
-
-                
-
                 <Section pad='large' justify='center' align='center' full='vertical' colorIndex='accent-2'>
                     <Headline margin='none'>
                     Section 1
                     </Headline>
                 </Section>
+                
+
                 <Section pad='large' justify='center' align='center' full='vertical' colorIndex='neutral-1-t'>
                     <Headline margin='none'>
                     Section 2
@@ -72,7 +73,8 @@ class E_Home extends React.Component{
                         Section 5                                            
                     </Headline>
                 </Section>
-            </Article>              
+            </Article>    
+            </div>          
         );
     }
 };

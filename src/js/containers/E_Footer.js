@@ -5,10 +5,10 @@ import Footer from 'grommet/components/Footer';
 
 class E_Footer extends React.Component{
     render(){
-        if(!this.props.UIManager.footerVisible) return null;
+        // if(!this.props.UIManager.footerVisible) return null;
         
         return(
-            <Footer colorIndex='accent-1' primary={true} appCentered={true} direction="column" align="center" pad="small" colorIndex="grey-1">
+            <Footer style={this.props.style} colorIndex='accent-1' primary={true} appCentered={true} direction="column" align="center" pad="small" colorIndex="grey-1">
                 <Title>EJ Shim Footer</Title>                
             </Footer>
         );

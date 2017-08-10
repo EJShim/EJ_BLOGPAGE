@@ -53,7 +53,7 @@ class E_Video extends React.Component{
             <Card onClick={()=>this._onClickCard(video.id)} thumbnail={video.image} label={video.title} />    
         );
         return(
-            <Section primary={false} flex={false} colorIndex='grey-2' padding='large'>
+            <Section primary={false} flex={false} colorIndex='grey-2' pad='large'>
                 <h1> Video </h1>
                 
                 <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} margin='large'>           
