@@ -143,6 +143,7 @@ export default class TodoAppDashboard extends Component {
     return (
       
       <Section primary={true} flex={true}>
+        
         <Box direction='row'>
           <Box basis='1/3' align='center'>
             <Meter series={series} type='circle' label={false}
@@ -160,7 +161,7 @@ export default class TodoAppDashboard extends Component {
             <Box pad={{ vertical: 'large' }} align='start'>
               <Button label='Add Task' primary={true}
                 onClick={this._onRequestForAdd} />
-            </Box>
+            </Box>          
           </Box>
         </Box>
         {addTask}

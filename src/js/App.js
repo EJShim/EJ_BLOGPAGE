@@ -24,7 +24,8 @@ class Main extends Component {
     this.state = {
       mobileNavHeight: 0, 
       mobileOffset: 0, 
-      navActive: false
+      navActive: false,
+      isMobile:false
     };
   }
 
@@ -38,10 +39,20 @@ class Main extends Component {
      }
 
     _layout () {
-        if (this._mobileNavRef) {
-            const rect = findDOMNode(this._mobileNavRef).getBoundingClientRect();
-            this.setState({ mobileNavHeight: rect.height });
-        }
+      if (this._mobileNavRef) {
+        let dom = findDOMNode(this._mobileNavRef)
+
+        let mobile = false;
+        if(dom.offsetParent !== null) mobile = true;     
+        
+        console.log(mobile)
+                
+        const rect = dom.getBoundingClientRect();
+        this.setState({ 
+          mobileNavHeight: rect.height, 
+          isMobile: mobile  
+        });
+      }
     }
 
     _onHandleMobileMenuButton(){
@@ -70,37 +81,34 @@ class Main extends Component {
 
 
     let articleStyle, footerStyle;
-    if (! navActive) {
+    if (!navActive) {
       articleStyle = { transform: `translateY(-${mobileNavHeight}px)` };
       footerStyle = { marginBottom: `-${mobileNavHeight}px`};
     }
 
+    console.log(this.state.isMobile);
+
     return (
       <App centered={false}>
-          <Box full={true}>
-            <Article className='home' style={articleStyle}>            
-            <E_MobileHeader className='home-mobile' ref={(ref) => this._mobileNavRef = ref} animate={false} menuAnchors={menuAnchors} />            
-            
-            <Box colorIndex='neutral-2' className='home-mobile' primary={true} align='center' pad={{ between: 'small' }} onClick={() => this._onHandleMobileMenuButton()} >
-                {navActive ? <UpIcon /> : <DownIcon />}
-                MENU
-            </Box>
-            
-            <E_DesktopHeader className='home-desktop' menuAnchors = {menuAnchors}/>
-
-            
-            
-
-              <Route exact path = '/' component={E_Home}/>
-              <Route path ='/board' component={TodoAppDashboard}/>
-              <Route path ='/portfolio' component={E_Portfolio}/>
-              <Route path ='/video' component={E_Video}/>
-              <Route path ='/collaboration' component={E_Collaboration}/>
+            <Article className='home' style={articleStyle}>        
+              <Box full={!this.state.isMobile}>
+                <E_MobileHeader className='home-mobile' ref={(ref) => this._mobileNavRef = ref} animate={false} menuAnchors={menuAnchors} />            
+                <Box colorIndex='neutral-1' className='home-mobile' primary={true} align='center' pad={{ between: 'small' }} onClick={() => this._onHandleMobileMenuButton()} >
+                    {navActive ? <UpIcon /> : <DownIcon />}
+                    MENU
+                </Box>            
+                <E_DesktopHeader className='home-desktop' menuAnchors = {menuAnchors}/>
+                <Route exact path = '/' component={E_Home}/>
+                <Route path ='/board' component={TodoAppDashboard}/>
+                <Route path ='/portfolio' component={E_Portfolio}/>
+                <Route path ='/video' component={E_Video}/>
+                <Route path ='/collaboration' component={E_Collaboration}/>
 
 
-              <E_Footer style={footerStyle}/>
+                <E_Footer style={footerStyle}/>
+              </Box>
             </Article>
-          </Box>                
+           
       </App>
     );
   }

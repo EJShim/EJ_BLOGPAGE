@@ -71,7 +71,7 @@ class E_Collaboration extends React.Component{
                             </Menu>
                         </Box>                        
                     
-                    <Box full='vertical'  ref={(el) => { this.renWin = el; }} />                        
+                    <Box full='vertical'  ref={(el) => { this.renWin = el; }} />
                 </Split>                                 
             
             </Section>
