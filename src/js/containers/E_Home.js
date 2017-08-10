@@ -29,18 +29,13 @@ class E_Home extends React.Component{
         return(
             <div>                    
             <Article scrollStep={false}>
-                <Hero background={<Image src='/img/sample.jpg' fit='cover' full={true} />} backgroundColorIndex='dark' size='large'>
+                <Hero background={<Image src='/img/sample-img.png' fit='cover' full={true} />} backgroundColorIndex='dark' size='large'>
                     <Box direction='row' justify='center' align='center'>
-                        <Box basis='1/2' align='end' pad='medium' />
-                            <Box basis='1/2' align='start' pad='medium'>
-                            <Box colorIndex='grey-1-a'>
-                                <Card heading='EJ' description='hhaha.'label='react' 
-                                link={<Anchor href='#'
-                                primary={true}
-                                label='Link' />} />
-                            </Box>
-                            </Box>
-                    </Box>
+                        
+                        <Box basis='1/5' align='end' pad='medium' />                                                        
+                            <Card heading='EJ' description='hhaha.'label='react'  link={<Anchor href='#' primary={true} label='Link' />} />
+                            <Box basis='1/2' align='start' pad='medium'/>                            
+                        </Box>
                 </Hero>
                                 
                 <Section pad='large' justify='center' align='center' full='vertical' colorIndex='grey-4'>
