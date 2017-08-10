@@ -56,7 +56,6 @@ class E_Collaboration extends React.Component{
         return(
             <Section colorIndex='neutral-1' primary={true} flex={true} pad='none'>
                 <Split fixed={false}  separator = {true} flex='right'>
-                    
                         <Box flex='grow' justify='start'>
                             <Menu primary={true} size='small'>
                                 <Anchor onClick={this._onImportMesh.bind(this)} className='active'>
@@ -73,7 +72,6 @@ class E_Collaboration extends React.Component{
                     
                     <Box full='vertical'  ref={(el) => { this.renWin = el; }} />
                 </Split>                                 
-            
             </Section>
         );
     }

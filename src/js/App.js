@@ -86,8 +86,6 @@ class Main extends Component {
       footerStyle = { marginBottom: `-${mobileNavHeight}px`};
     }
 
-    console.log(this.state.isMobile);
-
     return (
       <App centered={false}>
             <Article className='home' style={articleStyle}>        
