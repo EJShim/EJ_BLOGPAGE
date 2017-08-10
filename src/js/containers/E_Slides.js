@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import Card from 'grommet/components/Card';
+import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Section from 'grommet/components/Section'
 import E_SlidesLayer from 'components/E_SlidesLayer';
@@ -44,14 +45,23 @@ class E_Slides extends React.Component{
 
 
     render(){
+
+        const colors = ['accent-1', 'accent-2', 'neutral-1', 'neutral-2', 'neutral-2-t', 'neutral-3', 'neutral-3-t', 'neutral-4', 'ok'];
+        const sizes = ['XSmall', 'Small', 'Medium', 'auto'];
+
+
         const layer = <E_SlidesLayer onClose={this._onCloseLayer.bind(this)} sliceID={this.state.layerSlideId}/>
         const contents = this.state.slidesList.map((slide)=>
-            <Card onClick={()=>this._onClickCard(slide.id)} thumbnail="img/sample.jpg" label={slide.title} />    
+            <Box onClick={()=>this._onClickCard(slide.id)} colorIndex={colors[Math.round(Math.random()*colors.length+1)]} pad='large' size={sizes[Math.round(Math.random()*sizes.length+1)]}>
+                <Headline margin='large'>
+                {slide.title}
+                </Headline>
+            </Box>    
         );
 
         return(
             <Section primary={false} flex={false} colorIndex='grey-2' pad='large'>
-                <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} pad={{horizontal:"small"}}>
+                <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} pad='large'>
                     {contents}
                     {/* <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />
                     <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />    

@@ -67,9 +67,9 @@ class Main extends Component {
   const menuData = [
     {name:"Board", path:"/board", component:TodoAppDashboard}, 
     {name:"Portfolio", path:"/portfolio", component:E_Portfolio}, 
-    {name:"Video", path:"/video", component:E_Video}, 
-    {name:"Collaboration", path:"/Collaboration", component:E_Collaboration},
-    {name:"Slides", path:"/slides", component:E_Slides}
+    {name:"Video", path:"/video", component:E_Video},     
+    {name:"Slides", path:"/slides", component:E_Slides},
+    {name:"Collaboration", path:"/Collaboration", component:E_Collaboration}
   ];
 
   const menuAnchors = menuData.map((menu, index)=>
