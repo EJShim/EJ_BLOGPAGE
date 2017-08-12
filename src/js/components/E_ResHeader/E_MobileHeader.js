@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Section from 'grommet/components/Section';
 import Menu from 'grommet/components/Menu';
 import Animate from 'grommet/components/Animate';
+import HomeIcon from 'grommet/components/icons/base/Home'
 
 class E_MobileHeader extends React.Component{
      render () {        
@@ -10,6 +12,9 @@ class E_MobileHeader extends React.Component{
         let contents = (
             <Section justify='center' align='center' pad={{vertical: 'large'}} colorIndex='neutral-1' className={this.props.className}>
                 <Menu primary={true} align='center'>
+                     <Link className="grommetux-anchor" to='/'>                        
+                        <HomeIcon/>               
+                    </Link>
                     {menuAnchors}
                 </Menu>
             </Section>
