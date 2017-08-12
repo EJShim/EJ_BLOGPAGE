@@ -11,6 +11,7 @@ import Menu from 'grommet/components/Menu';
 import Title from 'grommet/components/Title';
 import Button from 'grommet/components/Button';
 import Anchor from 'grommet/components/Anchor';
+import Responsive from 'grommet/utils/Responsive';
 
 import {toggleFooter} from 'actions/UIAction';
 
@@ -19,6 +20,12 @@ import {toggleFooter} from 'actions/UIAction';
 class E_Collaboration extends React.Component{
     constructor(props){
         super(props);
+
+        this._onResponsive = this._onResponsive.bind(this);
+
+        this.state = {
+            mobile:false
+        }
     }   
 
     componentWillMount(){
@@ -28,7 +35,10 @@ class E_Collaboration extends React.Component{
     componentDidMount(){
         //Set Render Window
         let renWin = findDOMNode(this.renWin)
-        this.props.manager.SetRenderWindow(renWin)        
+        this.props.manager.SetRenderWindow(renWin)
+
+        //Set Responsive Option
+        this._responsive = Responsive.start(this._onResponsive);        
     }
 
     componentWillUnmount(){        
@@ -36,8 +46,16 @@ class E_Collaboration extends React.Component{
         this.props.manager.RemoveRenderWindow();        
         //Show Footer
         this.props.toggleFooter(true);
+
+        //Stop Responsive
+        this._responsive.stop();
     }
 
+    _onResponsive(mobile){
+        this.setState({mobile:mobile});
+
+        console.log(this.state);
+    }
 
     _onImportMesh(){
         console.log("Import Mesh");
