@@ -65,7 +65,7 @@ class Main extends Component {
   } = this.state;    
   
   const menuData = [
-    {name:"Board", path:"/board", component:TodoAppDashboard}, 
+    {name:"Board", path:"/board", component:E_Board}, 
     {name:"Portfolio", path:"/portfolio", component:E_Portfolio}, 
     {name:"Video", path:"/video", component:E_Video},     
     {name:"Slides", path:"/slides", component:E_Slides},

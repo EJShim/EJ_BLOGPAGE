@@ -4,6 +4,12 @@ import Section from 'grommet/components/Section';
 import Card from 'grommet/components/Card';
 import Box from 'grommet/components/Box';
 import E_VideoLayer from 'components/E_VideoLayer';
+import Spinning from 'grommet/components/icons/Spinning';
+import Animate from 'grommet/components/Animate';
+import Tiles from 'grommet/components/Tiles';
+import Tile from 'grommet/components/Tile';
+
+
 class E_Video extends React.Component{
     constructor(props){
         super(props);
@@ -11,8 +17,9 @@ class E_Video extends React.Component{
         this.state={
             dataExists:false,
             videoList:[],
-            layerVisible : false,
-            layerVideoId : null
+            listRange:5,
+            layerVideoId : null,
+            layerVisible : false
         }
     }
 
@@ -44,21 +51,49 @@ class E_Video extends React.Component{
 
     _onCloseLayer(){
         this.setState({layerVisible:false});
-    }   
+    }
+
+    _onMoreTile(){
+        this.setState({
+            listRange:this.state.listRange+5,
+        });
+        console.log(this.state.listRange, this.state.videoList.length);
+    }
 
 
     render(){
-        const layer = <E_VideoLayer onClose={this._onCloseLayer.bind(this)} videoID={this.state.layerVideoId}/>
-        const contents = this.state.videoList.map((video)=>
-            <Card onClick={()=>this._onClickCard(video.id)} thumbnail={video.image} label={video.title} />    
+        const layer = <E_VideoLayer visible={this.state.layerVisible} onClose={this._onCloseLayer.bind(this)} videoID={this.state.layerVideoId}/>
+
+        const vidList = this.state.videoList.slice(0,this.state.listRange);
+        const contents = vidList.map((video)=>
+            <Animate visible={true} enter={{"animation": "fade", "duration": 1500, "delay": 0}} keep={true}>
+                <Tile>
+                    <Card onClick={()=>this._onClickCard(video.id)} thumbnail={video.image} label={video.title} />    
+                </Tile>
+            </Animate>
         );
-        return(
-            <Section primary={false} flex={false} colorIndex='grey-2' pad='large'>
-                <h1> Video </h1>
-                
-                <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} pad={{horizontal:"small"}}>    
+
+        let contentElement = (
+            <Box pad='xlarge' align='center'>
+                <p> Loading </p>
+                <Spinning size='large'/>
+            </Box>
+        );
+         
+        if(this.state.dataExists){
+            let loadmore = true;
+            if(this.state.listRange >= this.state.videoList.length) loadmore = false;
+            contentElement = (                
+                <Tiles fill={true} onMore={ loadmore ? ()=>this._onMoreTile() : null }>
                     {contents}
-                </Box>
+                </Tiles>                
+            );
+        }   
+        
+        return(
+            <Section flex={!this.state.dataExists} colorIndex='grey-2' pad='large'>
+                <h1> Video </h1>                
+                {contentElement}                
                 {this.state.layerVisible &&  layer }
             </Section>
         );

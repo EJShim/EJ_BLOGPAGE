@@ -4,6 +4,7 @@ import Card from 'grommet/components/Card';
 import Headline from 'grommet/components/Headline';
 import Box from 'grommet/components/Box';
 import Section from 'grommet/components/Section'
+import Spinning from 'grommet/components/icons/Spinning';
 import E_SlidesLayer from 'components/E_SlidesLayer';
 
 class E_Slides extends React.Component{
@@ -59,17 +60,24 @@ class E_Slides extends React.Component{
             </Box>    
         );
 
-        return(
-            <Section primary={false} flex={false} colorIndex='grey-2' pad='large'>
+        let contentElement = (
+            <Box align='center' pad='large' margin='large'>
+                <p> Loading </p>
+                <Spinning size='large'/>
+            </Box>
+        );
+
+        if(this.state.dataExists){
+            contentElement = (
                 <Box direction='row' align='center'  justify='between' responsive={true} wrap={true} pad='large'>
-                    {contents}
-                    {/* <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />
-                    <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />    
-                    <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />    
-                    <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />    
-                    <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />    
-                    <Card onClick={()=>this._onClickCard("oweighsdoim")} thumbnail="img/sample.jpg" label='sample title' />     */}
+                    {contents}                    
                 </Box>
+            );
+        }
+
+        return(
+            <Section flex={!this.state.dataExists} colorIndex='grey-2' pad='large'>
+                {contentElement}
                 {this.state.layerVisible &&  layer }
             </Section>
         );
