@@ -41,8 +41,7 @@ class E_Video extends React.Component{
     }
 
 
-    _onClickCard(youtubeKey){
-        console.log(youtubeKey);        
+    _onClickCard(youtubeKey){    
         this.setState({
             layerVisible:true,
             layerVideoId:youtubeKey
@@ -54,10 +53,10 @@ class E_Video extends React.Component{
     }
 
     _onMoreTile(){
+        console.log("onmore")
         this.setState({
             listRange:this.state.listRange+5,
         });
-        console.log(this.state.listRange, this.state.videoList.length);
     }
 
 
@@ -80,7 +79,7 @@ class E_Video extends React.Component{
             </Box>
         );
          
-        if(this.state.dataExists){
+        if(this.state.dataExists){            
             let loadmore = true;
             if(this.state.listRange >= this.state.videoList.length) loadmore = false;
             contentElement = (                

@@ -8,7 +8,7 @@ import Footer from 'grommet/components/Footer';
 import Title from 'grommet/components/Title';
 import Article from 'grommet/components/Article'
 import Button from 'grommet/components/Button'
-
+import Responsive from 'grommet/utils/Responsive';
 import { Route, Link } from 'react-router-dom';
 import {E_Header, E_Footer, E_Home, E_Video, E_Portfolio, E_Board, E_Collaboration, E_Slides} from 'containers';
 import {E_MobileHeader, E_DesktopHeader} from 'components/E_ResHeader';
@@ -21,34 +21,41 @@ class Main extends Component {
   constructor(props){
     super(props);
 
+    this._onResponsive = this._onResponsive.bind(this);
     this.state = {
       mobileNavHeight: 0, 
       mobileOffset: 0, 
-      navActive: false,
-      isMobile:false
+      navActive: false,      
     };
   }
 
-     componentDidMount(){
-        window.addEventListener('resize', this._onResize.bind(this));
-        this._layout();
-    }
+  componentDidMount(){
+    window.addEventListener('resize', this._onResize.bind(this));
+    this._responsive = Responsive.start(this._onResponsive);
+    this._layout();
+  }
 
-    _onResize () {            
-        this._layout();
-     }
+  componentWillUnmount(){
+    this._responsive.stop();
+  }
+
+  _onResize () {     
+    this._layout();
+  }
+
+  _onResponsive(small){    
+    this.setState({
+      isMobile:small
+    });
+  }
 
     _layout () {
       if (this._mobileNavRef) {
         let dom = findDOMNode(this._mobileNavRef)
 
-        let mobile = false;
-        if(dom.offsetParent !== null) mobile = true;                   
-                
         const rect = dom.getBoundingClientRect();
         this.setState({ 
-          mobileNavHeight: rect.height, 
-          isMobile: mobile  
+          mobileNavHeight: rect.height,           
         });
       }
     }
@@ -90,7 +97,7 @@ class Main extends Component {
     }
 
     return (
-      <App centered={false}>
+      <App centered={false} inline={true}>
             <Article className='home' style={articleStyle}>        
               <Box full={!this.state.isMobile}>
                 <E_MobileHeader className='home-mobile' ref={(ref) => this._mobileNavRef = ref} animate={false} menuAnchors={menuAnchors} />            
