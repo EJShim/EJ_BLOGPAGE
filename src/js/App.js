@@ -52,20 +52,21 @@ class Main extends Component {
 
     _layout () {
       if (this._mobileNavRef) {
-        let dom = findDOMNode(this._mobileNavRef);
-        let menudom = findDOMNode(this._mobileMenuRef);
-
-        const rect = dom.getBoundingClientRect();
-        const menurect = menudom.getBoundingClientRect();
+        let dom = findDOMNode(this._mobileNavRef);    
+        const rect = dom.getBoundingClientRect();        
         this.setState({ 
-          mobileNavHeight: rect.height,
-          mobileMenuHeight: menurect.height
+          mobileNavHeight: rect.height
         });
       }
     }
 
     _onHandleMobileMenuButton(){
-        this.setState({ navActive: ! this.state.navActive });
+      let menudom = findDOMNode(this._mobileMenuRef);
+      const menurect = menudom.getBoundingClientRect();
+        this.setState({ 
+          navActive: ! this.state.navActive, 
+          mobileMenuHeight: menurect.height 
+        });
     }
 
 
@@ -100,13 +101,21 @@ class Main extends Component {
     }
 
     if(this.state.isMobile){
-      contentStyle = { height: mobileNavHeight };
+      contentStyle = { height: mobileMenuHeight };
     }
     return (
       <App centered={false} inline={true}>
         <Article className='home'>        
           <Box full={true}>
-            <Box style={contentStyle} colorIndex='neutral-2' />              
+            <Box style={contentStyle} colorIndex='neutral-2'>
+              <Article className='home home-mobile' style={articleStyle}>
+                <E_MobileHeader  ref={(ref) => this._mobileNavRef = ref} animate={false} menuAnchors={menuAnchors} />            
+                <Box ref={(ref) => this._mobileMenuRef = ref} full='horizontal' colorIndex='neutral-1' primary={true} align='center' pad={{ between: 'small' }} onClick={() => this._onHandleMobileMenuButton()} >
+                    {navActive ? <UpIcon /> : <DownIcon />}
+                    MENU
+                </Box>
+              </Article>            
+            </Box>              
             <E_DesktopHeader className='home-desktop' menuAnchors = {menuAnchors}/>
             
             <Route exact path = '/' component={E_Home}/>
