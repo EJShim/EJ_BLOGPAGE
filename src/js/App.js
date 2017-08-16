@@ -23,6 +23,7 @@ class Main extends Component {
 
     this._onResponsive = this._onResponsive.bind(this);
     this.state = {
+      mobileMenuHeight:0,
       mobileNavHeight: 0, 
       mobileOffset: 0, 
       navActive: false,      
@@ -51,11 +52,14 @@ class Main extends Component {
 
     _layout () {
       if (this._mobileNavRef) {
-        let dom = findDOMNode(this._mobileNavRef)
+        let dom = findDOMNode(this._mobileNavRef);
+        let menudom = findDOMNode(this._mobileMenuRef);
 
         const rect = dom.getBoundingClientRect();
+        const menurect = menudom.getBoundingClientRect();
         this.setState({ 
-          mobileNavHeight: rect.height,           
+          mobileNavHeight: rect.height,
+          mobileMenuHeight: menurect.height
         });
       }
     }
@@ -68,7 +72,7 @@ class Main extends Component {
   render() {
 
   const {
-    mobileNavHeight, mobileOffset, navActive
+    mobileMenuHeight, mobileNavHeight, mobileOffset, navActive
   } = this.state;    
   
   const menuData = [
@@ -90,30 +94,33 @@ class Main extends Component {
   );
 
 
-    let articleStyle, footerStyle;
+    let articleStyle, contentStyle;
     if (!navActive) {
-      articleStyle = { transform: `translateY(-${mobileNavHeight}px)` };
-      footerStyle = { marginBottom: `-${mobileNavHeight}px`};
+      articleStyle = { transform: `translateY(-${mobileNavHeight}px)` };     
     }
 
+    if(this.state.isMobile)
+    {contentStyle = { height:`${mobileMenuHeight}px` };}
     return (
       <App centered={false} inline={true}>
-            <Article className='home' style={articleStyle}>        
-              <Box full={!this.state.isMobile}>
-                <E_MobileHeader className='home-mobile' ref={(ref) => this._mobileNavRef = ref} animate={false} menuAnchors={menuAnchors} />            
-                <Box colorIndex='neutral-1' className='home-mobile' primary={true} align='center' pad={{ between: 'small' }} onClick={() => this._onHandleMobileMenuButton()} >
-                    {navActive ? <UpIcon /> : <DownIcon />}
-                    MENU
-                </Box>            
-                <E_DesktopHeader className='home-desktop' menuAnchors = {menuAnchors}/>
-                
-                <Route exact path = '/' component={E_Home}/>
-                {routerElements}
-
-                <E_Footer style={footerStyle}/>
-              </Box>
-            </Article>
-           
+        <Article className='home home-mobile' style={articleStyle}>
+          <E_MobileHeader  ref={(ref) => this._mobileNavRef = ref} animate={false} menuAnchors={menuAnchors} />            
+          <Box ref={(ref) => this._mobileMenuRef = ref} full='horizontal' colorIndex='neutral-1' primary={true} align='center' pad={{ between: 'small' }} onClick={() => this._onHandleMobileMenuButton()} >
+              {navActive ? <UpIcon /> : <DownIcon />}
+              MENU
+          </Box>
+        </Article>
+        
+        <Article className='home'>        
+          <Box full={true}>
+            <Box style={contentStyle} colorIndex='neutral-2' />
+            <E_DesktopHeader className='home-desktop' menuAnchors = {menuAnchors}/>
+            
+            <Route exact path = '/' component={E_Home}/>
+            {routerElements}            
+            <E_Footer/>
+          </Box>
+        </Article>        
       </App>
     );
   }
