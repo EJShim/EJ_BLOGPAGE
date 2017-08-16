@@ -52,9 +52,7 @@ class E_Collaboration extends React.Component{
     }
 
     _onResponsive(mobile){
-        this.setState({mobile:mobile});
-
-        console.log(this.state);
+        this.setState({mobile:mobile});        
     }
 
     _onImportMesh(){
