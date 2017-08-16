@@ -52,8 +52,7 @@ class E_Video extends React.Component{
         this.setState({layerVisible:false});
     }
 
-    _onMoreTile(){
-        console.log("onmore")
+    _onMoreTile(){        
         this.setState({
             listRange:this.state.listRange+5,
         });

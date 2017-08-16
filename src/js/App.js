@@ -100,21 +100,13 @@ class Main extends Component {
     }
 
     if(this.state.isMobile){
-      contentStyle = { height:`${mobileMenuHeight}px` };
+      contentStyle = { height: mobileNavHeight };
     }
     return (
       <App centered={false} inline={true}>
         <Article className='home'>        
           <Box full={true}>
-            <Box style={contentStyle} colorIndex='neutral-2'>
-              <Article className='home home-mobile' style={articleStyle}>
-                <E_MobileHeader  ref={(ref) => this._mobileNavRef = ref} animate={false} menuAnchors={menuAnchors} />            
-                <Box ref={(ref) => this._mobileMenuRef = ref} full='horizontal' colorIndex='neutral-1' primary={true} align='center' pad={{ between: 'small' }} onClick={() => this._onHandleMobileMenuButton()} >
-                    {navActive ? <UpIcon /> : <DownIcon />}
-                    MENU
-                </Box>
-              </Article>          
-            </Box>
+            <Box style={contentStyle} colorIndex='neutral-2' />              
             <E_DesktopHeader className='home-desktop' menuAnchors = {menuAnchors}/>
             
             <Route exact path = '/' component={E_Home}/>
