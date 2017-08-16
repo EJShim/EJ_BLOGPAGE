@@ -53,9 +53,13 @@ class Main extends Component {
     _layout () {
       if (this._mobileNavRef) {
         let dom = findDOMNode(this._mobileNavRef);    
-        const rect = dom.getBoundingClientRect();        
+        const rect = dom.getBoundingClientRect();
+        let menudom = findDOMNode(this._mobileMenuRef);
+        const menurect = menudom.getBoundingClientRect();    
+        
         this.setState({ 
-          mobileNavHeight: rect.height
+          mobileNavHeight: rect.height,
+          mobileMenuHeight: menurect.height
         });
       }
     }
@@ -97,7 +101,7 @@ class Main extends Component {
 
     let articleStyle, contentStyle;
     if (!navActive) {
-      articleStyle = { transform: `translateY(-${mobileNavHeight}px)` };     
+      // articleStyle = { transform: `translateY(-${mobileNavHeight}px)` };     
     }
 
     if(this.state.isMobile){
