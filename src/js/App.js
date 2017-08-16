@@ -101,7 +101,7 @@ class Main extends Component {
 
     let articleStyle, contentStyle;
     if (!navActive) {
-      // articleStyle = { transform: `translateY(-${mobileNavHeight}px)` };     
+      articleStyle = { transform: `translateY(-${mobileNavHeight}px)` };     
     }
 
     if(this.state.isMobile){
