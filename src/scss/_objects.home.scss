@@ -6,12 +6,6 @@
   margin-bottom: round($inuit-base-spacing-unit * 24);
 }
 
-.home-mobile{
-  position:absolute;
-  top:0;
-  left:0;  
-  z-index:10;
-}
 
 @include media-query(lap-and-up) {
   .home-mobile {
@@ -24,7 +18,15 @@
     display: none;
   }
 
-  .home {
+  .home-mobile{
+    position:absolute;
+    top:0px;
+    left:0px;  
+    z-index:10;
+    
+  }
+
+  .home {    
     transition: transform $animation-duration;
   }
 }
